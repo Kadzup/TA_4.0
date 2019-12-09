@@ -3,11 +3,27 @@ package Models;
 import java.lang.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.validation.constraints.*;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Service {
+    @NotBlank
+    @NotEmpty
+    @NotNull
+    @Size(min = 5, max = 128)
     private String name;
+
+    @NotNull
+    @PositiveOrZero
+    @Min(10)
     private double price;
+
+    @NotNull
+    @NotEmpty
+    @NotBlank
     private String providerCompany;
+
+    @NotNull
     private boolean riskCover;
 
     Service(){

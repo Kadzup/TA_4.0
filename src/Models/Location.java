@@ -2,14 +2,39 @@ package Models;
 
 import java.lang.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.validator.constraints.Range;
+
+import javax.validation.constraints.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Location {
+
+    @NotNull
     private Country country;
+
+    @NotEmpty
+    @NotBlank
+    @Size(min = 4, max = 25)
     private String name;
+
+    @PositiveOrZero
+    @Range(min = 0, max = 5)
+    @NotNull
     private float rating;
+
+    @NotNull
+    @NotEmpty
+    @NotBlank
+    @Size(min = 10, max = 128)
     private String address;
+
+    @NotNull
+    @NotEmpty
+    @NotBlank
+    @Size(min = 8, max = 12)
     private String phone;
+
+    @NotNull
     private Boolean available;
 
     Location(){

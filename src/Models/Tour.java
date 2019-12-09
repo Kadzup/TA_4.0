@@ -2,6 +2,12 @@ package Models;
 
 import java.lang.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 
 /**
  * <h1>Welcome to TA!</h1>
@@ -20,54 +26,71 @@ public class Tour {
     /**
      * Information about Company name
      * */
+    @NotNull
+    @NotBlank
     private String companyName;
     /**
      * Information about Tour price
      * */
+    @PositiveOrZero
     private float price;
     /**
      * Information about Company Taxes
      * */
+    @Positive
     private float taxes;
     /**
      * Information about Tour Owner
      * */
+    @NotNull
     private Worker owner;
     /**
      * Id of connected Service
      * */
+    @NotNull
     private Service service;
     /**
      * Id of connected Location
      * */
+    @NotNull
     private Location location;
     /**
      * Information about transport
      * */
+    @NotEmpty
+    @NotBlank
     private String transport;
     /**
      * Information about Visa Services accessibility
      * */
+    @NotNull
     private Boolean visa_service;
     /**
      * Information about Accommodation accessibility
      * */
+    @NotNull
     private Boolean accommodation;
     /**
      * Information about Accommodation type
      * */
+    @NotEmpty
+    @NotBlank
     private String accommodation_type;
     /**
      *  Information about Food accessibility
      * */
+    @NotNull
     private Boolean food;
     /**
      *  Information about Food type
      * */
+    @NotEmpty
+    @NotBlank
     private String food_type;
     /**
      * Information about Excursion accessibility
      * */
+    @NotNull
     private Boolean excursion;
 
 

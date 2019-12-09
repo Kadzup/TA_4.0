@@ -4,12 +4,26 @@ import java.lang.*;
 import java.util.Comparator;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Country{
+    @NotBlank
+    @NotEmpty
     private String name;
+
+    @PositiveOrZero
+    @Min(100)
     private long population;
+
+    @Positive
+    @Max(1000000)
     private double area;
+
+    @NotBlank
+    @Size(min = 3, max = 20)
     private String capital;
 
     Country(){

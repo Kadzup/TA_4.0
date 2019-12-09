@@ -3,38 +3,49 @@ package Models;
 import java.lang.*;
 import java.time.*;
 
+import javax.validation.constraints.*;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class Worker {
     /**
      * First name of Worker
      * */
+    @Size(min=2, max = 20)
     private String fName;
     /**
      * Last name of Worker
      * */
+    @Size(min=2, max = 20)
     private String lName;
     /**
      * Birth date of Worker
      * */
+    @NotNull
+    @PastOrPresent
     private LocalDate bDay;
 
     /**
      * Information about Worker Salary
      * */
+    @PositiveOrZero
     private float salary;
     /**
      * Information about Worker Position
      * */
+    @NotBlank
     private String position;
 
     /**
      * Information about Worker Address
      * */
+    @NotBlank
     private  String address;
     /**
      * Information about Worker Phone
      * */
+    @Pattern(regexp = "\\d{10}|(?:\\d{3}-){2}\\d{4}|\\(\\d{3}\\)\\d{3}-?\\d{4}")
     private  String phone;
 
     /**

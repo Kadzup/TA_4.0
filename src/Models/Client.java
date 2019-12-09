@@ -8,19 +8,40 @@ import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.validation.constraints.*;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Client implements Comparable<Client>{
+
+    @Size(min = 2, max = 15)
+    @NotBlank
+    @NotEmpty
     private String fName;
+
+    @Size(min = 2, max = 15)
+    @NotBlank
+    @NotEmpty
     private String lName;
 
+    @PastOrPresent
+    @NotNull
     private LocalDate bDay;
 
+    @Size(min = 16, max = 16)
+    @NotBlank
+    @NotEmpty
     private String paymentInfo;
 
+    @NotBlank
+    @NotEmpty
     private String phone;
+
+    @Email
+    @NotBlank
+    @NotEmpty
     private String email;
 
-    Client(){
+    public Client(){
         fName = "Null";
         lName = "Null";
 

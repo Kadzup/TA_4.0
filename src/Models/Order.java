@@ -4,13 +4,27 @@ import java.lang.*;
 import java.time.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.validation.constraints.*;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Order {
+    @NotNull
+    @PastOrPresent
     private LocalDate departure;
+
+    @NotNull
+    @FutureOrPresent
     private LocalDate arrival;
 
+    @NotNull
     private Client client;
+
+    @NotNull
     private Tour tour;
+
+    @NotNull
+    @PositiveOrZero
+    @Min(11)
     private float price;
 
     public Order(LocalDate departure, LocalDate arrival, Client client, Tour tour, float price) {
